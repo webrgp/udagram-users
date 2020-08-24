@@ -14,11 +14,10 @@ before_script:
   - echo "no tests"
 
 script:
-  # - cd project-3/udagram-apis/udagram-users
-  - docker --version 
-  - docker build -t udagram-user-restapi .
-  - docker tag udagram-user-restapi "$DOCKER_USERNAME"/udagram-user-restapi:latest
+  - docker --version
+  - docker build -t udagram-user .
+  - docker tag udagram-user "$DOCKER_USERNAME"/udagram-user:latest
 
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push "$DOCKER_USERNAME"/udagram-user-restapi
+  - docker push "$DOCKER_USERNAME"/udagram-user
